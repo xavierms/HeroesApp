@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styles: [
+    'mat-sidenav {width: 200px;}',
+    
   ]
 })
 export class HomeComponent implements OnInit {
@@ -12,5 +14,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
 
 }
