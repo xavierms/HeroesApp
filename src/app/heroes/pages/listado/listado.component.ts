@@ -12,8 +12,7 @@ export class ListadoComponent implements OnInit {
   constructor(private heroesService: HeroesService) { }
 
   ngOnInit(): void {
-    this.heroesService.getHeroes().subscribe(resp=>  console.log(resp)
-    )
+    this.heroesService.getHeroes().subscribe(resp=>  console.log(resp));
   }
 
 }

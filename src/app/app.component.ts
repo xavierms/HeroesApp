@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HeroesService } from './heroes/services/heroes.service';
+// import { HeroesService } from './heroes/services/heroes.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +8,10 @@ import { HeroesService } from './heroes/services/heroes.service';
 })
 export class AppComponent {
   title = 'heroesApp';
-  constructor(private heroesService: HeroesService) { }
+  // constructor(private heroesService: HeroesService) { }
 
   ngOnInit(): void {
-    this.heroesService.getHeroes().subscribe(resp=>  console.log(resp)
-    )
+    // this.heroesService.getHeroes().subscribe(resp=>  console.log(resp)
+    // )
   }
 }
