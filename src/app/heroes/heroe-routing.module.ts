@@ -26,12 +26,12 @@ const routes: Routes =[
         component:BuscarComponent
       },
       {
-        path:':id',
-        component:HeroesComponent
-      },
-      {
         path:'listado',
         component:ListadoComponent
+      },
+      {
+        path:':id',
+        component:HeroesComponent
       },
       {
         path:'**',
