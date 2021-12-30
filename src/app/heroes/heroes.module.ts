@@ -10,6 +10,8 @@ import { BuscarComponent } from './pages/buscar/buscar.component';
 import { HeroesComponent } from './pages/heroes/heroes.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ListadoComponent } from './pages/listado/listado.component';
+import { HeroeTarjetaComponent } from './pages/components/heroe-tarjeta/heroe-tarjeta.component';
+import { ImagenPipe } from './pipes/imagen.pipe';
 
 
 
@@ -20,7 +22,9 @@ import { ListadoComponent } from './pages/listado/listado.component';
     BuscarComponent,
     HeroesComponent,
     HomeComponent,
-    ListadoComponent
+    ListadoComponent,
+    HeroeTarjetaComponent,
+    ImagenPipe
   ],
   imports: [
     CommonModule,
