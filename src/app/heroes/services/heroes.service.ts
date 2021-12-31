@@ -7,11 +7,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HeroesService {
+BackendDB: string = 'http://localhost:3000/heroes';
 
   constructor(private http: HttpClient) { }
 
 getHeroes(): Observable<Heroe[]>{
- return this.http.get<Heroe[]>('http://localhost:3000/heroes');
+ return this.http.get<Heroe[]>(this.BackendDB);
+}
+
+getHeroePorId(id: string): Observable<Heroe>{
+  return this.http.get<Heroe>(`${this.BackendDB}/${id}`);
+
 }
 
 }
