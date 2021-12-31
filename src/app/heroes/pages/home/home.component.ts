@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 .container{
   margin:  10px;
 }
+.miLogo{
+  width: 10%;
+  margin-left: 83%;
+}
 `
 
     

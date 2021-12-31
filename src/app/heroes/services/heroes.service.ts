@@ -2,21 +2,26 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Heroe } from '../interfaces/heroes.interfaces';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeroesService {
-BackendDB: string = 'http://localhost:3000/heroes';
+private apiHeroes: string = environment.apiHeroes;
 
   constructor(private http: HttpClient) { }
 
 getHeroes(): Observable<Heroe[]>{
- return this.http.get<Heroe[]>(this.BackendDB);
+ return this.http.get<Heroe[]>(`${ this.apiHeroes}/heroes`);
 }
 
 getHeroePorId(id: string): Observable<Heroe>{
-  return this.http.get<Heroe>(`${this.BackendDB}/${id}`);
+  return this.http.get<Heroe>(`${this.apiHeroes}/heroes/${id}`);
+
+}
+getSugerencias(termino: string, count: number): Observable<Heroe[]>{
+  return this.http.get<Heroe[]>(`${this.apiHeroes}/heroes/?q=${ termino }&_limit=${ count }`);
 
 }
 

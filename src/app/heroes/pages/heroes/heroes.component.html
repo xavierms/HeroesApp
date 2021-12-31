@@ -5,9 +5,14 @@
 </mat-grid-list>
 
 <ng-template #divHeroe>
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px">
-    <div fxFlex="50">
-      <h1>
+  <div fxLayout="row" 
+       fxLayout.xs="column" 
+       fxLayoutGap="90px">
+       
+    <div
+    class="mover" 
+    fxFlex="23">
+      <h1 >
         {{ heroe.superhero }} <small>- {{ heroe.alter_ego }}</small>
       </h1>
       <mat-divider></mat-divider>
@@ -27,7 +32,8 @@
       </mat-list>
 
       <br>
-      <button mat-button color="warn" (click)="regresar()">
+      <button mat-button color="warn" 
+              (click)="regresar()">
           Regregar
       </button>
     </div>

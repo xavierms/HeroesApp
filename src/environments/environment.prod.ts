@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  apiHeroes: 'http://xavier-mejia.site/api'
+
 };
