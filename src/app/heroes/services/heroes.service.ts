@@ -20,8 +20,8 @@ getHeroePorId(id: string): Observable<Heroe>{
   return this.http.get<Heroe>(`${this.apiHeroes}/heroes/${id}`);
 
 }
-getSugerencias(termino: string, count: number): Observable<Heroe[]>{
-  return this.http.get<Heroe[]>(`${this.apiHeroes}/heroes/?q=${ termino }&_limit=${ count }`);
+getSugerencias(termino: string): Observable<Heroe[]>{//  count: number
+  return this.http.get<Heroe[]>(`${this.apiHeroes}/heroes/?q=${ termino }&_limit=6`);//${ count }
 
 }
 

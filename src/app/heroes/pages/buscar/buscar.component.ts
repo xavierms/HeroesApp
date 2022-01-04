@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators,FormBuilder } from '@angular/forms';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Heroe } from '../../interfaces/heroes.interfaces';
 import { HeroesService } from '../../services/heroes.service';
 
@@ -13,8 +14,9 @@ export class BuscarComponent implements OnInit {
 
   constructor(private FormBuilder: FormBuilder,
               private HeroesService: HeroesService) { }
- heroe: Heroe[]=[];
  termino: string = '';
+ heroe: Heroe[]=[];
+ heroeSeleccionado:Heroe | undefined;
  vermas: number =6;
   FormSearch = this.FormBuilder.group({
     heroe: ['',[Validators.required]]
@@ -24,23 +26,32 @@ export class BuscarComponent implements OnInit {
   }
 
   aumentarSugerenciasBuscador(){
-    this.vermas += 1;
-    console.log(this.vermas);
+    // this.vermas += 1;
+    // console.log(this.vermas);
     
-    this.HeroesService.getSugerencias(this.termino, this.vermas)
-    .subscribe( heroes => this.heroe = heroes )
+    // this.HeroesService.getSugerencias(this.termino, this.vermas)
+    // .subscribe( heroes => this.heroe = heroes )
   }
 
   buscando(){
-    console.log(this.vermas);
+    //console.log(this.vermas);
     
-   this.HeroesService.getSugerencias(this.termino,this.vermas)
-   .subscribe(heroes => {
-     this.heroe = heroes;
-     console.log(this.heroe);
-     
-    })
-   console.log(this.heroe);
+   this.HeroesService.getSugerencias( this.termino.trim() )//this.vermas
+   .subscribe(heroes => this.heroe = heroes )
+   
+  }
+
+
+  opcionSeleccionada(event: MatAutocompleteSelectedEvent){
+
+    if(!event.option.value){
+      this.heroeSeleccionado = undefined;
+     return;
+    }
+    const heroe: Heroe = event.option.value;
+    this.termino = heroe.superhero;
+    this.HeroesService.getHeroePorId( heroe.id! )
+    .subscribe( heroe => this.heroeSeleccionado = heroe )
    
   }
 }

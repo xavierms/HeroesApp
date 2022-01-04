@@ -1,33 +1,43 @@
-<div fxLayout="column">
-    <div>
-        <h1>Buscador de Héroes</h1>
-        {{termino}}
+<div>
+  <h1>Buscador de Héroes</h1>
+  <mat-divider></mat-divider>
+</div>
+
+
+<div >
+    <div fxLayout="column">
+      <h3>Buscador</h3>
       <!--  <form class="example-form">[formGroup]="FormSearch" -->
             <mat-form-field>
-              <mat-label>Number</mat-label>
               <input type="text"
                      placeholder="Pick one"
                      aria-label="Number"
                      matInput
-                     (ngModel)="termino"
+                     [(ngModel)]="termino"
                      [matAutocomplete]="auto"
                      (input)="buscando()"
                      >
-              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"><!--formControlName="heroe"-->
-                <mat-option *ngFor="let heroe of heroe " [value]="heroe.superhero">
+              <mat-autocomplete autoActiveFirstOption 
+                                #auto="matAutocomplete"
+                                (optionSelected)="opcionSeleccionada($event)"><!--formControlName="heroe"-->
+                <mat-option *ngFor="let heroe of heroe " [value]="heroe">
                   {{heroe.superhero}}
                 </mat-option>
-                <button mat-button 
-                        (click)="aumentarSugerenciasBuscador()"
-                        color="accent">
+                <mat-option value="" *ngIf="heroe.length === 0 && termino.trim().length > 0">
+                  No se encontró nada con el termino {{ termino}}.
+                </mat-option>
+              <!--  <button mat-button                       
+                        color="accent"> (click)="aumentarSugerenciasBuscador()" 
 
                     Ver más...
-                </button>
+                </button>-->
               </mat-autocomplete>
+
             </mat-form-field>
-          <!-- </form> -->
-    </div>
-    <div>
-        2
+            <!-- </form> -->
+          </div>
+        
+          <div>
+            <pre>{{heroeSeleccionado | json}}</pre>
     </div>
 </div>
