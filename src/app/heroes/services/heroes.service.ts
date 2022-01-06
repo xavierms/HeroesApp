@@ -22,7 +22,18 @@ getHeroePorId(id: string): Observable<Heroe>{
 }
 getSugerencias(termino: string): Observable<Heroe[]>{//  count: number
   return this.http.get<Heroe[]>(`${this.apiHeroes}/heroes/?q=${ termino }&_limit=6`);//${ count }
-
 }
 
+
+postHeroe( heroe: Heroe ):Observable<Heroe>{
+return this.http.post<Heroe>(`${ this.apiHeroes }/heroes`, heroe);
+}
+
+putHeroe( heroe: Heroe ):Observable<Heroe>{
+  return this.http.put<Heroe>(`${ this.apiHeroes }/heroes/${ heroe.id }`, heroe);
+  }
+deleteHeroe( id: any ):Observable<any>{
+    return this.http.delete<any>(`${ this.apiHeroes }/heroes/${ id }`);
+    }
+  
 }
