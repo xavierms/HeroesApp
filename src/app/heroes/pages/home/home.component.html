@@ -34,9 +34,15 @@
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-<img class="miLogo" src="/assets/milogotipoWhite.png" alt="Mi logo Xavier">
+    <span>
+      <img class="miLogo" src="/assets/milogotipoWhite.png" alt="Mi logo Xavier">
+
+    </span>
     <span class="spacer"></span>
-    <button mat-button>
+
+    <span>{{ auth.usuario }}</span>
+    <button (click)="logout()" 
+           mat-button>
         Logout
       </button>
   </mat-toolbar>
