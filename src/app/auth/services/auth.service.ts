@@ -14,8 +14,8 @@ private apiHeroes: string = environment.apiHeroes;
 private _auth?: Auth;
 
 
-get auth(){
-  return {...this._auth }
+get auth(): Auth{
+  return {...this._auth! }
 }
   constructor( private http: HttpClient) { }
 
@@ -40,7 +40,7 @@ get auth(){
     return this.http.get<Auth>(`${ this.apiHeroes }/usuarios/1`)
     .pipe(
       tap( auth=> this._auth = auth ),
-      tap( auth=> localStorage.setItem('id', auth.id))
+      tap( auth=> localStorage.setItem('token', auth.id))
     )
   }
 
